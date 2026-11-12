@@ -1,0 +1,29 @@
+{
+ "case_id": "CASE_0226",
+ "resource_kind": "Role",
+ "resource_name": "rabbitmq-prod-endpoint-reader",
+ "namespace": "rabbitmq-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/rules/2",
+   "old": null,
+   "new": {
+    "apiGroups": [
+     ""
+    ],
+    "resources": [
+     "secrets"
+    ],
+    "verbs": [
+     "get",
+     "list",
+     "watch"
+    ]
+   }
+  }
+ ],
+ "diff_readable": "ADD rules[2]: {\"apiGroups\": [\"\"], \"resources\": [\"secrets\"], \"verbs\": [\"get\", \"list\", \"watch\"]}",
+ "desired_yaml": "kind: Role\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: rabbitmq-prod-endpoint-reader\n  namespace: rabbitmq-prod\n  labels:\n    app.kubernetes.io/instance: rabbitmq-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: rabbitmq\n    app.kubernetes.io/version: 4.1.3\n    helm.sh/chart: rabbitmq-16.0.14\n    environment: prod\nrules:\n- apiGroups:\n  - ''\n  resources:\n  - endpoints\n  verbs:\n  - get\n- apiGroups:\n  - ''\n  resources:\n  - events\n  verbs:\n  - create\n"
+}

@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0259",
+ "resource_kind": "Secret",
+ "resource_name": "redis-dev",
+ "namespace": "redis-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/data/redis-password",
+   "old": "cmVkaXMtcGFzc3dvcmQtMTIz",
+   "new": "RGJBY2Mzc3NUMGszbl80Mg=="
+  }
+ ],
+ "diff_readable": "REPLACE data.redis-password: \"redis-password-123\" → \"DbAcc3ssT0k3n_42\"",
+ "desired_yaml": "apiVersion: v1\nkind: Secret\nmetadata:\n  name: redis-dev\n  namespace: redis-dev\n  labels:\n    app.kubernetes.io/instance: redis-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: dev\ntype: Opaque\ndata:\n  redis-password: cmVkaXMtcGFzc3dvcmQtMTIz\n"
+}

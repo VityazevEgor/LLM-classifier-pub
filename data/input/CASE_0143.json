@@ -1,0 +1,35 @@
+{
+ "case_id": "CASE_0143",
+ "resource_kind": "NetworkPolicy",
+ "resource_name": "redis-dev",
+ "namespace": "redis-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "prometheus.io/scrape": "true"
+   }
+  },
+  {
+   "op": "add",
+   "path": "/spec/ingress/1",
+   "old": null,
+   "new": {
+    "from": [
+     {
+      "podSelector": {
+       "matchLabels": {
+        "app.kubernetes.io/name": "api-gateway"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"prometheus.io/scrape\": \"true\"}\nADD spec.ingress[1]: {\"from\": [{\"podSelector\": {\"matchLabels\": {\"app.kubernetes.io/name\": \"api-gateway\"}}}]}",
+ "desired_yaml": "kind: NetworkPolicy\napiVersion: networking.k8s.io/v1\nmetadata:\n  name: redis-dev\n  namespace: redis-dev\n  labels:\n    app.kubernetes.io/instance: redis-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: dev\nspec:\n  podSelector:\n    matchLabels:\n      app.kubernetes.io/instance: redis-dev\n      app.kubernetes.io/name: redis\n  policyTypes:\n  - Ingress\n  - Egress\n  egress:\n  - {}\n  ingress:\n  - ports:\n    - port: 6379\n"
+}

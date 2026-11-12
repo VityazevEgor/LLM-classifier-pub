@@ -1,0 +1,21 @@
+env_file: ".env"   # файл с ключом (см. .env.example); переопределяется переменной окружения YANDEX_ENV_FILE
+paths:
+  raw: "../DriftBench-Offline-Pub/dataset/raw"
+  splits: "../DriftBench-Offline-Pub/dataset/splits/cases.json"
+  labels_main: "../DriftBench-Offline-Pub/annotated_dataset/annotation_main_labeled.csv"
+  labels_second: "../DriftBench-Offline-Pub/annotated_dataset/annotation_second_labeled.csv"
+  rubric: "../DriftBench-Offline-Pub/dataset/annotation/Rubric_DriftBench_Annotation.md"
+  index_csv: "../DriftBench-Offline-Pub/dataset/index.csv"   # используется только в evaluate.py (срезы метрик)
+prompt_version: 2
+call:
+  temperature: 0
+  max_tokens: 4000
+  max_tokens_retry: 8000
+  max_workers: 4
+  http_retries: 5
+  invalid_retries: 2
+  timeout_s: 300
+  desired_yaml_limit: 20000
+models:
+  deepseek: {name: "deepseek-v4.1-flash", uri_template: "gpt://{folder}/deepseek-v4.1-flash/latest"}
+  qwen:     {name: "qwen3.6-35b-a3b",     uri_template: "gpt://{folder}/qwen3.6-35b-a3b/latest"}

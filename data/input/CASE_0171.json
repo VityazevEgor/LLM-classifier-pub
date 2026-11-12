@@ -1,0 +1,27 @@
+{
+ "case_id": "CASE_0171",
+ "resource_kind": "ClusterRole",
+ "resource_name": "ingress-nginx-prod",
+ "namespace": "ingress-nginx-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/rules/9",
+   "old": null,
+   "new": {
+    "apiGroups": [
+     ""
+    ],
+    "resources": [
+     "pods/exec"
+    ],
+    "verbs": [
+     "create"
+    ]
+   }
+  }
+ ],
+ "diff_readable": "ADD rules[9]: {\"apiGroups\": [\"\"], \"resources\": [\"pods/exec\"], \"verbs\": [\"create\"]}",
+ "desired_yaml": "apiVersion: rbac.authorization.k8s.io/v1\nkind: ClusterRole\nmetadata:\n  labels:\n    helm.sh/chart: ingress-nginx-4.15.1\n    app.kubernetes.io/name: ingress-nginx\n    app.kubernetes.io/instance: ingress-nginx-prod\n    app.kubernetes.io/version: 1.15.1\n    app.kubernetes.io/part-of: ingress-nginx\n    app.kubernetes.io/managed-by: Helm\n    environment: prod\n  name: ingress-nginx-prod\nrules:\n- apiGroups:\n  - ''\n  resources:\n  - configmaps\n  - endpoints\n  - nodes\n  - pods\n  - secrets\n  - namespaces\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - coordination.k8s.io\n  resources:\n  - leases\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - nodes\n  verbs:\n  - get\n- apiGroups:\n  - ''\n  resources:\n  - services\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingresses\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - events\n  verbs:\n  - create\n  - patch\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingresses/status\n  verbs:\n  - update\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingressclasses\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - discovery.k8s.io\n  resources:\n  - endpointslices\n  verbs:\n  - list\n  - watch\n  - get\n"
+}

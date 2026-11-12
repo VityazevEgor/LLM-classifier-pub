@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0224",
+ "resource_kind": "Service",
+ "resource_name": "postgresql-prod",
+ "namespace": "postgresql-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/spec/ports/0/targetPort",
+   "old": "tcp-postgresql",
+   "new": 9099
+  }
+ ],
+ "diff_readable": "REPLACE spec.ports[0].targetPort: \"tcp-postgresql\" → 9099",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: postgresql-prod\n  namespace: postgresql-prod\n  labels:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    app.kubernetes.io/component: primary\n    environment: prod\nspec:\n  type: ClusterIP\n  ports:\n  - name: tcp-postgresql\n    port: 5432\n    targetPort: tcp-postgresql\n    nodePort: null\n  selector:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/component: primary\n"
+}

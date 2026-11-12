@@ -1,0 +1,19 @@
+{
+ "case_id": "CASE_0247",
+ "resource_kind": "ConfigMap",
+ "resource_name": "ingress-nginx-prod-controller",
+ "namespace": "ingress-nginx-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/data",
+   "old": null,
+   "new": {
+    "log.level": "debug"
+   }
+  }
+ ],
+ "diff_readable": "ADD data: {\"log.level\": \"debug\"}",
+ "desired_yaml": "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  labels:\n    helm.sh/chart: ingress-nginx-4.15.1\n    app.kubernetes.io/name: ingress-nginx\n    app.kubernetes.io/instance: ingress-nginx-prod\n    app.kubernetes.io/version: 1.15.1\n    app.kubernetes.io/part-of: ingress-nginx\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: controller\n    environment: prod\n  name: ingress-nginx-prod-controller\n  namespace: ingress-nginx-prod\ndata: null\n"
+}

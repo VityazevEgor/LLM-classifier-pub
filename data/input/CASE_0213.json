@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0213",
+ "resource_kind": "ServiceAccount",
+ "resource_name": "redis-prod-replica",
+ "namespace": "redis-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/env-ticket",
+   "old": null,
+   "new": "TICKET-187"
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.env-ticket: \"TICKET-187\"",
+ "desired_yaml": "apiVersion: v1\nkind: ServiceAccount\nautomountServiceAccountToken: false\nmetadata:\n  name: redis-prod-replica\n  namespace: redis-prod\n  labels:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: prod\n"
+}

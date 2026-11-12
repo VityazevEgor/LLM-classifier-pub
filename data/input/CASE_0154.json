@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0154",
+ "resource_kind": "Service",
+ "resource_name": "redis-prod-master",
+ "namespace": "redis-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/build-number",
+   "old": null,
+   "new": "145"
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.build-number: \"145\"",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: redis-prod-master\n  namespace: redis-prod\n  labels:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    app.kubernetes.io/component: master\n    environment: prod\nspec:\n  type: ClusterIP\n  internalTrafficPolicy: Cluster\n  ports:\n  - name: tcp-redis\n    port: 6379\n    targetPort: redis\n    nodePort: null\n  selector:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/component: master\n"
+}

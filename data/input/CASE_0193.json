@@ -1,0 +1,25 @@
+{
+ "case_id": "CASE_0193",
+ "resource_kind": "NetworkPolicy",
+ "resource_name": "postgresql-prod-pgdumpall",
+ "namespace": "postgresql-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/env-ticket",
+   "old": null,
+   "new": "TICKET-825"
+  },
+  {
+   "op": "add",
+   "path": "/spec/ingress",
+   "old": null,
+   "new": [
+    {}
+   ]
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.env-ticket: \"TICKET-825\"\nADD spec.ingress: [{}]",
+ "desired_yaml": "kind: NetworkPolicy\napiVersion: networking.k8s.io/v1\nmetadata:\n  name: postgresql-prod-pgdumpall\n  namespace: postgresql-prod\n  labels:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    app.kubernetes.io/component: pg_dumpall\n    environment: prod\nspec:\n  podSelector:\n    matchLabels:\n      app.kubernetes.io/instance: postgresql-prod\n      app.kubernetes.io/name: postgresql\n      app.kubernetes.io/component: pg_dumpall\n  policyTypes:\n  - Egress\n  egress:\n  - ports:\n    - port: 5432\n      protocol: TCP\n    - port: 53\n      protocol: TCP\n    - port: 53\n      protocol: UDP\n"
+}

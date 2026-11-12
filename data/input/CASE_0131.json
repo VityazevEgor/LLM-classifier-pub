@@ -1,0 +1,27 @@
+{
+ "case_id": "CASE_0131",
+ "resource_kind": "RoleBinding",
+ "resource_name": "rabbitmq-prod-endpoint-reader",
+ "namespace": "rabbitmq-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/pipeline.run~1id",
+   "old": null,
+   "new": "pipe-8242"
+  },
+  {
+   "op": "add",
+   "path": "/subjects/1",
+   "old": null,
+   "new": {
+    "kind": "ServiceAccount",
+    "name": "default",
+    "namespace": "rabbitmq-prod"
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.pipeline.run/id: \"pipe-8242\"\nADD subjects[1]: {\"kind\": \"ServiceAccount\", \"name\": \"default\", \"namespace\": \"rabbitmq-prod\"}",
+ "desired_yaml": "kind: RoleBinding\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: rabbitmq-prod-endpoint-reader\n  namespace: rabbitmq-prod\n  labels:\n    app.kubernetes.io/instance: rabbitmq-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: rabbitmq\n    app.kubernetes.io/version: 4.1.3\n    helm.sh/chart: rabbitmq-16.0.14\n    environment: prod\nsubjects:\n- kind: ServiceAccount\n  name: rabbitmq-prod\nroleRef:\n  apiGroup: rbac.authorization.k8s.io\n  kind: Role\n  name: rabbitmq-prod-endpoint-reader\n"
+}

@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0266",
+ "resource_kind": "ServiceAccount",
+ "resource_name": "redis-prod-master",
+ "namespace": "redis-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/metadata/labels/helm.sh~1chart",
+   "old": "redis-28.3.1",
+   "new": "redis-28.3.2"
+  }
+ ],
+ "diff_readable": "REPLACE metadata.labels.helm.sh/chart: \"redis-28.3.1\" → \"redis-28.3.2\"",
+ "desired_yaml": "apiVersion: v1\nkind: ServiceAccount\nautomountServiceAccountToken: false\nmetadata:\n  name: redis-prod-master\n  namespace: redis-prod\n  labels:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: prod\n"
+}

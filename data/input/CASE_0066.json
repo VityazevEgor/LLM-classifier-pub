@@ -1,0 +1,25 @@
+{
+ "case_id": "CASE_0066",
+ "resource_kind": "Service",
+ "resource_name": "kube-state-metrics-dev",
+ "namespace": "kube-state-metrics-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "remove",
+   "path": "/metadata/annotations",
+   "old": {
+    "prometheus.io/scrape": "true"
+   },
+   "new": null
+  },
+  {
+   "op": "replace",
+   "path": "/spec/ports/0/targetPort",
+   "old": "http",
+   "new": 9099
+  }
+ ],
+ "diff_readable": "REMOVE metadata.annotations: {\"prometheus.io/scrape\": \"true\"}\nREPLACE spec.ports[0].targetPort: \"http\" → 9099",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: kube-state-metrics-dev\n  namespace: kube-state-metrics-dev\n  labels:\n    helm.sh/chart: kube-state-metrics-8.6.0\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: metrics\n    app.kubernetes.io/part-of: kube-state-metrics\n    app.kubernetes.io/name: kube-state-metrics\n    app.kubernetes.io/instance: kube-state-metrics-dev\n    app.kubernetes.io/version: 2.20.0\n    environment: dev\n  annotations:\n    prometheus.io/scrape: 'true'\nspec:\n  type: ClusterIP\n  ports:\n  - name: http\n    protocol: TCP\n    port: 8080\n    targetPort: http\n  selector:\n    app.kubernetes.io/name: kube-state-metrics\n    app.kubernetes.io/instance: kube-state-metrics-dev\n"
+}

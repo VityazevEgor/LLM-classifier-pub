@@ -1,0 +1,25 @@
+{
+ "case_id": "CASE_0234",
+ "resource_kind": "PodDisruptionBudget",
+ "resource_name": "nginx-dev",
+ "namespace": "nginx-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "deployment.timestamp": "2026-10-22T10:00:00Z"
+   }
+  },
+  {
+   "op": "replace",
+   "path": "/spec/minAvailable",
+   "old": 1,
+   "new": 0
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"deployment.timestamp\": \"2026-10-22T10:00:00Z\"}\nREPLACE spec.minAvailable: 1 → 0",
+ "desired_yaml": "apiVersion: policy/v1\nkind: PodDisruptionBudget\nmetadata:\n  name: nginx-dev\n  namespace: nginx-dev\n  labels:\n    app.kubernetes.io/instance: nginx-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: dev\nspec:\n  minAvailable: 1\n  selector:\n    matchLabels:\n      app.kubernetes.io/instance: nginx-dev\n      app.kubernetes.io/name: nginx\n"
+}

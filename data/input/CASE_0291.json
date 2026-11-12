@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0291",
+ "resource_kind": "ServiceAccount",
+ "resource_name": "prometheus-node-exporter-prod",
+ "namespace": "prometheus-node-exporter-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/owner",
+   "old": null,
+   "new": "team-alpha"
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.owner: \"team-alpha\"",
+ "desired_yaml": "apiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: prometheus-node-exporter-prod\n  namespace: prometheus-node-exporter-prod\n  labels:\n    helm.sh/chart: prometheus-node-exporter-4.60.0\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: metrics\n    app.kubernetes.io/part-of: prometheus-node-exporter\n    app.kubernetes.io/name: prometheus-node-exporter\n    app.kubernetes.io/instance: prometheus-node-exporter-prod\n    app.kubernetes.io/version: 1.12.1\n    environment: prod\nautomountServiceAccountToken: false\n"
+}

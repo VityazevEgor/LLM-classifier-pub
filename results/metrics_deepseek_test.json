@@ -1,0 +1,196 @@
+{
+ "model": "deepseek",
+ "model_uri": "gpt://<FOLDER_ID>/deepseek-v4.1-flash/latest",
+ "split": "test",
+ "run_date": [
+  "2026-11-09"
+ ],
+ "prompt_version": 2,
+ "served_models": [
+  "gpt://deepseek-v4.1-flash/latest"
+ ],
+ "n_runs": 3,
+ "n": 252,
+ "accuracy": 0.9682539682539683,
+ "macro_f1": 0.973280671755978,
+ "per_class": {
+  "1": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "support": 24
+  },
+  "2": {
+   "precision": 0.9662921348314607,
+   "recall": 0.9662921348314607,
+   "f1": 0.9662921348314607,
+   "support": 89
+  },
+  "3": {
+   "precision": 0.9382716049382716,
+   "recall": 1.0,
+   "f1": 0.9681528662420382,
+   "support": 76
+  },
+  "4": {
+   "precision": 1.0,
+   "recall": 0.9206349206349206,
+   "f1": 0.9586776859504132,
+   "support": 63
+  }
+ },
+ "confusion": {
+  "rows_gold": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "cols_pred": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "matrix": [
+   [
+    0,
+    24,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    86,
+    3,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    76,
+    0
+   ],
+   [
+    0,
+    0,
+    3,
+    2,
+    58
+   ]
+  ]
+ },
+ "kappa": 0.9553952695975396,
+ "kappa_linear": 0.9577065088035153,
+ "under_rate": 0.01984126984126984,
+ "over_rate": 0.011904761904761904,
+ "invalid_count": 0,
+ "ci95": {
+  "accuracy": [
+   0.9444444444444444,
+   0.9880952380952381
+  ],
+  "macro_f1": [
+   0.9537386974274781,
+   0.9899609868474036
+  ],
+  "kappa_linear": [
+   0.92361080859069,
+   0.9848844401874086
+  ],
+  "n_boot": 2000,
+  "seed": 42
+ },
+ "prompt_sha256": "system(prompt_v2.md)  a010c41ffbcdb39e6bbbc7bdad4b009b4be9d3719f85aa3ebd9a5c52e5d0136d\nuser_template_v2.md  553b7ab8c7d8e42f34ebc2816d0ee67b162a6c009cd9993a63b7653db5a0ec0f\ncombined  d9b2f7f09793daae059f7b0765c5218b4aee594c40caae84f8e16525fdabf8d2",
+ "tokens_total": {
+  "prompt": 3072272,
+  "completion": 172258
+ },
+ "calls_stats": {
+  "length_retry_cases": 0,
+  "invalid_retry_total": 2,
+  "truncated_yaml_cases": 0
+ },
+ "stability": {
+  "per_run_macro_f1": [
+   0.9702887449518098,
+   0.9769660559861334,
+   0.9827746248770269
+  ],
+  "per_run_accuracy": [
+   0.9642857142857143,
+   0.9722222222222222,
+   0.9801587301587301
+  ],
+  "macro_f1_min": 0.9702887449518098,
+  "macro_f1_max": 0.9827746248770269,
+  "per_run_invalid": [
+   0,
+   0,
+   0
+  ],
+  "all_agree_share": 0.9801587301587301,
+  "fleiss_kappa": 0.9813795855233668
+ },
+ "slices": {
+  "operator_split": {
+   "held_out": {
+    "n": 85,
+    "accuracy": 0.9647058823529412,
+    "macro_f1": 0.9682330964764485
+   },
+   "seen": {
+    "n": 167,
+    "accuracy": 0.9700598802395209,
+    "macro_f1": 0.9745725876557519
+   }
+  },
+  "case_type": {
+   "compound": {
+    "n": 51,
+    "accuracy": 0.9607843137254902,
+    "macro_f1": 0.9682539682539684
+   },
+   "paired": {
+    "n": 76,
+    "accuracy": 0.9736842105263158,
+    "macro_f1": 0.9727941176470589
+   },
+   "single": {
+    "n": 125,
+    "accuracy": 0.968,
+    "macro_f1": 0.9700355167917998
+   }
+  },
+  "environment": {
+   "dev": {
+    "n": 127,
+    "accuracy": 0.9763779527559056,
+    "macro_f1": 0.9776455026455027
+   },
+   "prod": {
+    "n": 125,
+    "accuracy": 0.96,
+    "macro_f1": 0.9639386057531354
+   }
+  }
+ },
+ "pair_consistency": {
+  "pairs_total": 38,
+  "consistent": 38,
+  "rate": 1.0
+ },
+ "vs_expert2": {
+  "n": 43,
+  "kappa_model_e2": 0.9045151739452257,
+  "kappa_linear_model_e2": 0.9254119687771032,
+  "kappa_e1_e2": 0.9042316258351893,
+  "kappa_linear_e1_e2": 0.944324557617609,
+  "kappa_model_e1": 0.9364844903988183,
+  "accuracy_model_e2": 0.9302325581395349
+ }
+}

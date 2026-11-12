@@ -1,0 +1,37 @@
+{
+ "case_id": "CASE_0035",
+ "resource_kind": "Role",
+ "resource_name": "ingress-nginx-prod",
+ "namespace": "ingress-nginx-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "backup.velero.io/backup-volumes": "data"
+   }
+  },
+  {
+   "op": "add",
+   "path": "/rules/10",
+   "old": null,
+   "new": {
+    "apiGroups": [
+     ""
+    ],
+    "resources": [
+     "secrets"
+    ],
+    "verbs": [
+     "get",
+     "list",
+     "watch"
+    ]
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"backup.velero.io/backup-volumes\": \"data\"}\nADD rules[10]: {\"apiGroups\": [\"\"], \"resources\": [\"secrets\"], \"verbs\": [\"get\", \"list\", \"watch\"]}",
+ "desired_yaml": "apiVersion: rbac.authorization.k8s.io/v1\nkind: Role\nmetadata:\n  labels:\n    helm.sh/chart: ingress-nginx-4.15.1\n    app.kubernetes.io/name: ingress-nginx\n    app.kubernetes.io/instance: ingress-nginx-prod\n    app.kubernetes.io/version: 1.15.1\n    app.kubernetes.io/part-of: ingress-nginx\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: controller\n    environment: prod\n  name: ingress-nginx-prod\n  namespace: ingress-nginx-prod\nrules:\n- apiGroups:\n  - ''\n  resources:\n  - namespaces\n  verbs:\n  - get\n- apiGroups:\n  - ''\n  resources:\n  - configmaps\n  - pods\n  - secrets\n  - endpoints\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - services\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingresses\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingresses/status\n  verbs:\n  - update\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingressclasses\n  verbs:\n  - get\n  - list\n  - watch\n- apiGroups:\n  - coordination.k8s.io\n  resources:\n  - leases\n  resourceNames:\n  - ingress-nginx-prod-leader\n  verbs:\n  - get\n  - update\n- apiGroups:\n  - coordination.k8s.io\n  resources:\n  - leases\n  verbs:\n  - create\n- apiGroups:\n  - ''\n  resources:\n  - events\n  verbs:\n  - create\n  - patch\n- apiGroups:\n  - discovery.k8s.io\n  resources:\n  - endpointslices\n  verbs:\n  - list\n  - watch\n  - get\n"
+}

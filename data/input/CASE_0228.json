@@ -1,0 +1,25 @@
+{
+ "case_id": "CASE_0228",
+ "resource_kind": "Secret",
+ "resource_name": "postgresql-dev",
+ "namespace": "postgresql-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "prometheus.io/scrape": "true"
+   }
+  },
+  {
+   "op": "replace",
+   "path": "/data/postgres-password",
+   "old": "cG9zdGdyZXMtcGFzc3dvcmQtMTIz",
+   "new": "U3VwM3JLOHNBZG0xbiM5OQ=="
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"prometheus.io/scrape\": \"true\"}\nREPLACE data.postgres-password: \"postgres-password-123\" → \"Sup3rK8sAdm1n#99\"",
+ "desired_yaml": "apiVersion: v1\nkind: Secret\nmetadata:\n  name: postgresql-dev\n  namespace: postgresql-dev\n  labels:\n    app.kubernetes.io/instance: postgresql-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    environment: dev\ntype: Opaque\ndata:\n  postgres-password: cG9zdGdyZXMtcGFzc3dvcmQtMTIz\n"
+}

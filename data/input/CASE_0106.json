@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0106",
+ "resource_kind": "Service",
+ "resource_name": "postgresql-prod-hl",
+ "namespace": "postgresql-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/spec/selector/app.kubernetes.io~1component",
+   "old": "primary",
+   "new": "primary-v2"
+  }
+ ],
+ "diff_readable": "REPLACE spec.selector.app.kubernetes.io/component: \"primary\" → \"primary-v2\"",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: postgresql-prod-hl\n  namespace: postgresql-prod\n  labels:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    app.kubernetes.io/component: primary\n    environment: prod\n  annotations: null\nspec:\n  type: ClusterIP\n  clusterIP: None\n  publishNotReadyAddresses: true\n  ports:\n  - name: tcp-postgresql\n    port: 5432\n    targetPort: tcp-postgresql\n  selector:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/component: primary\n"
+}

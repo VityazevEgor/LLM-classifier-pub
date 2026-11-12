@@ -1,0 +1,27 @@
+{
+ "case_id": "CASE_0011",
+ "resource_kind": "NetworkPolicy",
+ "resource_name": "redis-prod",
+ "namespace": "redis-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/metadata/labels/app.kubernetes.io~1version",
+   "old": "8.10.2",
+   "new": "8.10.3"
+  },
+  {
+   "op": "remove",
+   "path": "/spec/ingress/0/ports",
+   "old": [
+    {
+     "port": 6379
+    }
+   ],
+   "new": null
+  }
+ ],
+ "diff_readable": "REPLACE metadata.labels.app.kubernetes.io/version: \"8.10.2\" → \"8.10.3\"\nREMOVE spec.ingress[0].ports: [{\"port\": 6379}]",
+ "desired_yaml": "kind: NetworkPolicy\napiVersion: networking.k8s.io/v1\nmetadata:\n  name: redis-prod\n  namespace: redis-prod\n  labels:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: prod\nspec:\n  podSelector:\n    matchLabels:\n      app.kubernetes.io/instance: redis-prod\n      app.kubernetes.io/name: redis\n  policyTypes:\n  - Ingress\n  - Egress\n  egress:\n  - {}\n  ingress:\n  - ports:\n    - port: 6379\n"
+}

@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0282",
+ "resource_kind": "ConfigMap",
+ "resource_name": "redis-dev-configuration",
+ "namespace": "redis-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/data/aws_secret_access_key",
+   "old": null,
+   "new": "AKIA440802EXAMPLE"
+  }
+ ],
+ "diff_readable": "ADD data.aws_secret_access_key: \"AKIA440802EXAMPLE\"",
+ "desired_yaml": "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: redis-dev-configuration\n  namespace: redis-dev\n  labels:\n    app.kubernetes.io/instance: redis-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: dev\ndata:\n  redis.conf: '# User-supplied common configuration:\n\n    # Enable ReJSON y Redisearch\n\n    loadmodule /opt/bitnami/redis/lib/redis/modules/redisearch.so\n\n    loadmodule /opt/bitnami/redis/lib/redis/modules/rejson.so\n\n    # Enable AOF https://redis.io/topics/persistence#append-only-file\n\n    appendonly yes\n\n    # Disable RDB persistence, AOF persistence already enabled.\n\n    save \"\"\n\n    # End of common configuration'\n  master.conf: 'dir /data\n\n    # User-supplied master configuration:\n\n    rename-command FLUSHDB \"\"\n\n    rename-command FLUSHALL \"\"\n\n    # End of master configuration'\n  replica.conf: 'dir /data\n\n    # User-supplied replica configuration:\n\n    rename-command FLUSHDB \"\"\n\n    rename-command FLUSHALL \"\"\n\n    # End of replica configuration'\n"
+}

@@ -1,0 +1,10 @@
+{
+ "date": "2026-11-09",
+ "sha256": {
+  "annotation_main_labeled.csv": "3eca05f34ea2dbcb9c943bb4fb6c289794129e533484a358cf6b3c175b9812ec",
+  "annotation_second_labeled.csv": "66bddf87fcc47f78d6e690ec216c1885bce565f5069a4739b50fdc2dd1d17ced"
+ },
+ "n_cases": 322,
+ "n_dev": 70,
+ "n_test": 252
+}

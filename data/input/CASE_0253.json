@@ -1,0 +1,35 @@
+{
+ "case_id": "CASE_0253",
+ "resource_kind": "NetworkPolicy",
+ "resource_name": "kube-state-metrics-dev",
+ "namespace": "kube-state-metrics-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "prometheus.io/port": "9100"
+   }
+  },
+  {
+   "op": "add",
+   "path": "/spec/ingress/1",
+   "old": null,
+   "new": {
+    "from": [
+     {
+      "podSelector": {
+       "matchLabels": {
+        "app.kubernetes.io/name": "monitoring"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"prometheus.io/port\": \"9100\"}\nADD spec.ingress[1]: {\"from\": [{\"podSelector\": {\"matchLabels\": {\"app.kubernetes.io/name\": \"monitoring\"}}}]}",
+ "desired_yaml": "kind: NetworkPolicy\napiVersion: networking.k8s.io/v1\nmetadata:\n  labels:\n    helm.sh/chart: kube-state-metrics-8.6.0\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: metrics\n    app.kubernetes.io/part-of: kube-state-metrics\n    app.kubernetes.io/name: kube-state-metrics\n    app.kubernetes.io/instance: kube-state-metrics-dev\n    app.kubernetes.io/version: 2.20.0\n    environment: dev\n  name: kube-state-metrics-dev\n  namespace: kube-state-metrics-dev\nspec:\n  ingress:\n  - ports:\n    - port: http\n      protocol: TCP\n  podSelector:\n    matchLabels:\n      app.kubernetes.io/name: kube-state-metrics\n      app.kubernetes.io/instance: kube-state-metrics-dev\n  policyTypes:\n  - Ingress\n  - Egress\n"
+}

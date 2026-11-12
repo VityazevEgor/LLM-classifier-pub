@@ -1,0 +1,27 @@
+{
+ "case_id": "CASE_0126",
+ "resource_kind": "NetworkPolicy",
+ "resource_name": "rabbitmq-prod",
+ "namespace": "rabbitmq-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/spec/ingress/1",
+   "old": null,
+   "new": {
+    "from": [
+     {
+      "podSelector": {
+       "matchLabels": {
+        "app.kubernetes.io/name": "ingress-nginx"
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "diff_readable": "ADD spec.ingress[1]: {\"from\": [{\"podSelector\": {\"matchLabels\": {\"app.kubernetes.io/name\": \"ingress-nginx\"}}}]}",
+ "desired_yaml": "kind: NetworkPolicy\napiVersion: networking.k8s.io/v1\nmetadata:\n  name: rabbitmq-prod\n  namespace: rabbitmq-prod\n  labels:\n    app.kubernetes.io/instance: rabbitmq-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: rabbitmq\n    app.kubernetes.io/version: 4.1.3\n    helm.sh/chart: rabbitmq-16.0.14\n    environment: prod\nspec:\n  podSelector:\n    matchLabels:\n      app.kubernetes.io/instance: rabbitmq-prod\n      app.kubernetes.io/name: rabbitmq\n  policyTypes:\n  - Ingress\n  - Egress\n  egress:\n  - {}\n  ingress:\n  - ports:\n    - port: 4369\n    - port: 5672\n    - port: 5671\n    - port: 25672\n    - port: 15672\n"
+}

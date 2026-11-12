@@ -1,0 +1,25 @@
+{
+ "case_id": "CASE_0211",
+ "resource_kind": "HorizontalPodAutoscaler",
+ "resource_name": "nginx-dev",
+ "namespace": "nginx-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "backup.velero.io/backup-volumes": "data"
+   }
+  },
+  {
+   "op": "replace",
+   "path": "/spec/metrics/0/resource/target/averageUtilization",
+   "old": 80,
+   "new": 95
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"backup.velero.io/backup-volumes\": \"data\"}\nREPLACE spec.metrics[0].resource.target.averageUtilization: 80 → 95",
+ "desired_yaml": "apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: nginx-dev\n  namespace: nginx-dev\n  labels:\n    app.kubernetes.io/instance: nginx-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: dev\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: nginx-dev\n  minReplicas: 1\n  maxReplicas: 3\n  metrics:\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 80\n"
+}

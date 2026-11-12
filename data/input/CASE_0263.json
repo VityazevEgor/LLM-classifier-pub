@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0263",
+ "resource_kind": "HorizontalPodAutoscaler",
+ "resource_name": "nginx-prod",
+ "namespace": "nginx-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/spec/maxReplicas",
+   "old": 3,
+   "new": 1
+  }
+ ],
+ "diff_readable": "REPLACE spec.maxReplicas: 3 → 1",
+ "desired_yaml": "apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: nginx-prod\n  namespace: nginx-prod\n  labels:\n    app.kubernetes.io/instance: nginx-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: prod\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: nginx-prod\n  minReplicas: 1\n  maxReplicas: 3\n  metrics:\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 80\n"
+}

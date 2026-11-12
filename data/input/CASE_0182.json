@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0182",
+ "resource_kind": "Service",
+ "resource_name": "rabbitmq-prod",
+ "namespace": "rabbitmq-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/spec/selector/app.kubernetes.io~1name",
+   "old": "rabbitmq",
+   "new": "rabbitmq-v2"
+  }
+ ],
+ "diff_readable": "REPLACE spec.selector.app.kubernetes.io/name: \"rabbitmq\" → \"rabbitmq-v2\"",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: rabbitmq-prod\n  namespace: rabbitmq-prod\n  labels:\n    app.kubernetes.io/instance: rabbitmq-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: rabbitmq\n    app.kubernetes.io/version: 4.1.3\n    helm.sh/chart: rabbitmq-16.0.14\n    environment: prod\nspec:\n  type: ClusterIP\n  sessionAffinity: None\n  ports:\n  - name: amqp\n    port: 5672\n    targetPort: amqp\n    nodePort: null\n  - name: epmd\n    port: 4369\n    targetPort: epmd\n    nodePort: null\n  - name: dist\n    port: 25672\n    targetPort: dist\n    nodePort: null\n  - name: http-stats\n    port: 15672\n    targetPort: stats\n    nodePort: null\n  selector:\n    app.kubernetes.io/instance: rabbitmq-prod\n    app.kubernetes.io/name: rabbitmq\n"
+}

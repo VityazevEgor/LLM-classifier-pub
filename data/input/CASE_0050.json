@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0050",
+ "resource_kind": "PodDisruptionBudget",
+ "resource_name": "redis-prod-master",
+ "namespace": "redis-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/metadata/labels/app.kubernetes.io~1version",
+   "old": "8.10.2",
+   "new": "8.10.3"
+  }
+ ],
+ "diff_readable": "REPLACE metadata.labels.app.kubernetes.io/version: \"8.10.2\" → \"8.10.3\"",
+ "desired_yaml": "apiVersion: policy/v1\nkind: PodDisruptionBudget\nmetadata:\n  name: redis-prod-master\n  namespace: redis-prod\n  labels:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    app.kubernetes.io/component: master\n    environment: prod\nspec:\n  minAvailable: 1\n  selector:\n    matchLabels:\n      app.kubernetes.io/instance: redis-prod\n      app.kubernetes.io/name: redis\n      app.kubernetes.io/component: master\n"
+}

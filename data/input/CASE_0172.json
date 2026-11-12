@@ -1,0 +1,23 @@
+{
+ "case_id": "CASE_0172",
+ "resource_kind": "Secret",
+ "resource_name": "redis-prod",
+ "namespace": "redis-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/pipeline.run~1id",
+   "old": null,
+   "new": "pipe-5837"
+  },
+  {
+   "op": "replace",
+   "path": "/data/redis-password",
+   "old": "cmVkaXMtcGFzc3dvcmQtMTIz",
+   "new": "U3VwM3JLOHNBZG0xbiM5OQ=="
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.pipeline.run/id: \"pipe-5837\"\nREPLACE data.redis-password: \"redis-password-123\" → \"Sup3rK8sAdm1n#99\"",
+ "desired_yaml": "apiVersion: v1\nkind: Secret\nmetadata:\n  name: redis-prod\n  namespace: redis-prod\n  labels:\n    app.kubernetes.io/instance: redis-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    environment: prod\ntype: Opaque\ndata:\n  redis-password: cmVkaXMtcGFzc3dvcmQtMTIz\n"
+}

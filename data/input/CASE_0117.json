@@ -1,0 +1,29 @@
+{
+ "case_id": "CASE_0117",
+ "resource_kind": "DaemonSet",
+ "resource_name": "prometheus-node-exporter-prod",
+ "namespace": "prometheus-node-exporter-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/spec/template/metadata/annotations/checksum~1config",
+   "old": null,
+   "new": "hash-98452"
+  },
+  {
+   "op": "replace",
+   "path": "/spec/template/spec/containers/0/imagePullPolicy",
+   "old": "IfNotPresent",
+   "new": "Always"
+  },
+  {
+   "op": "replace",
+   "path": "/spec/template/spec/containers/0/env/0/value",
+   "old": "0.0.0.0",
+   "new": "secondary"
+  }
+ ],
+ "diff_readable": "ADD spec.template.metadata.annotations.checksum/config: \"hash-98452\"\nREPLACE spec.template.spec.containers[node-exporter].imagePullPolicy: \"IfNotPresent\" → \"Always\"\nREPLACE spec.template.spec.containers[node-exporter].env[0].value: \"0.0.0.0\" → \"secondary\"",
+ "desired_yaml": "apiVersion: apps/v1\nkind: DaemonSet\nmetadata:\n  name: prometheus-node-exporter-prod\n  namespace: prometheus-node-exporter-prod\n  labels:\n    helm.sh/chart: prometheus-node-exporter-4.60.0\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: metrics\n    app.kubernetes.io/part-of: prometheus-node-exporter\n    app.kubernetes.io/name: prometheus-node-exporter\n    app.kubernetes.io/instance: prometheus-node-exporter-prod\n    app.kubernetes.io/version: 1.12.1\n    environment: prod\nspec:\n  selector:\n    matchLabels:\n      app.kubernetes.io/name: prometheus-node-exporter\n      app.kubernetes.io/instance: prometheus-node-exporter-prod\n  revisionHistoryLimit: 10\n  updateStrategy:\n    rollingUpdate:\n      maxUnavailable: 1\n    type: RollingUpdate\n  template:\n    metadata:\n      annotations:\n        cluster-autoscaler.kubernetes.io/safe-to-evict: 'true'\n      labels:\n        app.kubernetes.io/component: metrics\n        app.kubernetes.io/instance: prometheus-node-exporter-prod\n        app.kubernetes.io/managed-by: Helm\n        app.kubernetes.io/name: prometheus-node-exporter\n        app.kubernetes.io/part-of: prometheus-node-exporter\n        app.kubernetes.io/version: 1.12.1\n    spec:\n      automountServiceAccountToken: false\n      securityContext:\n        fsGroup: 65534\n        runAsGroup: 65534\n        runAsNonRoot: true\n        runAsUser: 65534\n      serviceAccountName: prometheus-node-exporter-prod\n      containers:\n      - name: node-exporter\n        image: quay.io/prometheus/node-exporter:v1.12.1\n        imagePullPolicy: IfNotPresent\n        args:\n        - --path.procfs=/host/proc\n        - --path.sysfs=/host/sys\n        - --path.rootfs=/host/root\n        - --path.udev.data=/host/root/run/udev/data\n        - --web.listen-address=[$(HOST_IP)]:9100\n        - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/containerd/.+|var/lib/docker/.+|var/lib/kubelet/.+)($|/)\n        - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs|erofs)$\n        securityContext:\n          readOnlyRootFilesystem: true\n        env:\n        - name: HOST_IP\n          value: 0.0.0.0\n        ports:\n        - name: metrics\n          containerPort: 9100\n          protocol: TCP\n        livenessProbe:\n          failureThreshold: 3\n          httpGet:\n            httpHeaders: null\n            path: /\n            port: metrics\n            scheme: HTTP\n          initialDelaySeconds: 0\n          periodSeconds: 10\n          successThreshold: 1\n          timeoutSeconds: 1\n        readinessProbe:\n          failureThreshold: 3\n          httpGet:\n            httpHeaders: null\n            path: /\n            port: metrics\n            scheme: HTTP\n          initialDelaySeconds: 0\n          periodSeconds: 10\n          successThreshold: 1\n          timeoutSeconds: 1\n        volumeMounts:\n        - name: proc\n          mountPath: /host/proc\n          readOnly: true\n        - name: sys\n          mountPath: /host/sys\n          readOnly: true\n        - name: root\n          mountPath: /host/root\n          mountPropagation: HostToContainer\n          readOnly: true\n      hostNetwork: true\n      hostPID: true\n      hostIPC: false\n      affinity:\n        nodeAffinity:\n          requiredDuringSchedulingIgnoredDuringExecution:\n            nodeSelectorTerms:\n            - matchExpressions:\n              - key: eks.amazonaws.com/compute-type\n                operator: NotIn\n                values:\n                - fargate\n              - key: type\n                operator: NotIn\n                values:\n                - virtual-kubelet\n      nodeSelector:\n        kubernetes.io/os: linux\n      tolerations:\n      - effect: NoSchedule\n        operator: Exists\n      volumes:\n      - name: proc\n        hostPath:\n          path: /proc\n      - name: sys\n        hostPath:\n          path: /sys\n      - name: root\n        hostPath:\n          path: /\n"
+}

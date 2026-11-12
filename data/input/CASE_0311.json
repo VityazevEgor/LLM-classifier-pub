@@ -1,0 +1,19 @@
+{
+ "case_id": "CASE_0311",
+ "resource_kind": "ServiceAccount",
+ "resource_name": "postgresql-prod",
+ "namespace": "postgresql-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "prometheus.io/scrape": "true"
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"prometheus.io/scrape\": \"true\"}",
+ "desired_yaml": "apiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: postgresql-prod\n  namespace: postgresql-prod\n  labels:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    environment: prod\nautomountServiceAccountToken: false\n"
+}

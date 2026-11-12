@@ -1,0 +1,131 @@
+{
+ "model": "deepseek",
+ "model_uri": "gpt://<FOLDER_ID>/deepseek-v4.1-flash/latest",
+ "split": "dev",
+ "run_date": [
+  "2026-11-09"
+ ],
+ "prompt_version": 2,
+ "served_models": [
+  "gpt://deepseek-v4.1-flash/latest"
+ ],
+ "n_runs": 1,
+ "n": 70,
+ "accuracy": 0.9571428571428572,
+ "macro_f1": 0.946579476861167,
+ "per_class": {
+  "1": {
+   "precision": 0.75,
+   "recall": 1.0,
+   "f1": 0.8571428571428571,
+   "support": 6
+  },
+  "2": {
+   "precision": 1.0,
+   "recall": 0.918918918918919,
+   "f1": 0.9577464788732394,
+   "support": 37
+  },
+  "3": {
+   "precision": 0.9444444444444444,
+   "recall": 1.0,
+   "f1": 0.9714285714285714,
+   "support": 17
+  },
+  "4": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "support": 10
+  }
+ },
+ "confusion": {
+  "rows_gold": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "cols_pred": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "matrix": [
+   [
+    0,
+    6,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    2,
+    34,
+    1,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    17,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    10
+   ]
+  ]
+ },
+ "kappa": 0.9341279799247177,
+ "kappa_linear": 0.9525101763907734,
+ "under_rate": 0.02857142857142857,
+ "over_rate": 0.014285714285714285,
+ "invalid_count": 0,
+ "ci95": {
+  "accuracy": [
+   0.9,
+   1.0
+  ],
+  "macro_f1": [
+   0.8666666666666667,
+   1.0
+  ],
+  "kappa_linear": [
+   0.8887122416534181,
+   1.0
+  ],
+  "n_boot": 2000,
+  "seed": 42
+ },
+ "prompt_sha256": null,
+ "tokens_total": {
+  "prompt": 280438,
+  "completion": 16751
+ },
+ "calls_stats": {
+  "length_retry_cases": 0,
+  "invalid_retry_total": 0,
+  "truncated_yaml_cases": 0
+ },
+ "stability": {
+  "per_run_macro_f1": [
+   0.946579476861167
+  ],
+  "per_run_accuracy": [
+   0.9571428571428572
+  ],
+  "macro_f1_min": 0.946579476861167,
+  "macro_f1_max": 0.946579476861167,
+  "per_run_invalid": [
+   0
+  ]
+ }
+}

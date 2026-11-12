@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0327",
+ "resource_kind": "ConfigMap",
+ "resource_name": "nginx-prod-server-block",
+ "namespace": "nginx-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/data/password",
+   "old": null,
+   "new": "plain-pass-773"
+  }
+ ],
+ "diff_readable": "ADD data.password: \"plain-pass-773\"",
+ "desired_yaml": "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: nginx-prod-server-block\n  namespace: nginx-prod\n  labels:\n    app.kubernetes.io/instance: nginx-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: prod\ndata:\n  server-block.conf: \"server {\\n  listen 8080;\\n  location / {\\n    return 200 \\\"\\\n    OK\\\";\\n  }\\n}\"\n"
+}

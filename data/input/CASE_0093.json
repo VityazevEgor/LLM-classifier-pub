@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0093",
+ "resource_kind": "ConfigMap",
+ "resource_name": "postgresql-prod-extended-configuration",
+ "namespace": "postgresql-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/data/override.conf",
+   "old": "max_connections = 100",
+   "new": "primary"
+  }
+ ],
+ "diff_readable": "REPLACE data.override.conf: \"max_connections = 100\" → \"primary\"",
+ "desired_yaml": "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: postgresql-prod-extended-configuration\n  namespace: postgresql-prod\n  labels:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    app.kubernetes.io/component: primary\n    environment: prod\ndata:\n  override.conf: max_connections = 100\n"
+}

@@ -1,0 +1,131 @@
+{
+ "model": "qwen",
+ "model_uri": "gpt://<FOLDER_ID>/qwen3.6-35b-a3b/latest",
+ "split": "dev",
+ "run_date": [
+  "2026-11-09"
+ ],
+ "prompt_version": 2,
+ "served_models": [
+  "gpt://qwen3.6-35b-a3b/latest"
+ ],
+ "n_runs": 1,
+ "n": 70,
+ "accuracy": 0.9428571428571428,
+ "macro_f1": 0.9410834934606087,
+ "per_class": {
+  "1": {
+   "precision": 0.8571428571428571,
+   "recall": 1.0,
+   "f1": 0.9230769230769231,
+   "support": 6
+  },
+  "2": {
+   "precision": 0.9722222222222222,
+   "recall": 0.9459459459459459,
+   "f1": 0.958904109589041,
+   "support": 37
+  },
+  "3": {
+   "precision": 0.8823529411764706,
+   "recall": 0.8823529411764706,
+   "f1": 0.8823529411764706,
+   "support": 17
+  },
+  "4": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "support": 10
+  }
+ },
+ "confusion": {
+  "rows_gold": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "cols_pred": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "matrix": [
+   [
+    0,
+    6,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    35,
+    2,
+    0
+   ],
+   [
+    0,
+    1,
+    1,
+    15,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    10
+   ]
+  ]
+ },
+ "kappa": 0.9107427478482627,
+ "kappa_linear": 0.9195032198712052,
+ "under_rate": 0.02857142857142857,
+ "over_rate": 0.02857142857142857,
+ "invalid_count": 0,
+ "ci95": {
+  "accuracy": [
+   0.8857142857142857,
+   0.9857142857142858
+  ],
+  "macro_f1": [
+   0.8635847683037515,
+   0.9898454273054165
+  ],
+  "kappa_linear": [
+   0.8280796690045137,
+   0.9851079606923909
+  ],
+  "n_boot": 2000,
+  "seed": 42
+ },
+ "prompt_sha256": null,
+ "tokens_total": {
+  "prompt": 261738,
+  "completion": 100780
+ },
+ "calls_stats": {
+  "length_retry_cases": 0,
+  "invalid_retry_total": 0,
+  "truncated_yaml_cases": 0
+ },
+ "stability": {
+  "per_run_macro_f1": [
+   0.9410834934606087
+  ],
+  "per_run_accuracy": [
+   0.9428571428571428
+  ],
+  "macro_f1_min": 0.9410834934606087,
+  "macro_f1_max": 0.9410834934606087,
+  "per_run_invalid": [
+   0
+  ]
+ }
+}

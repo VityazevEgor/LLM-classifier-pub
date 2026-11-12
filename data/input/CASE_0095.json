@@ -1,0 +1,19 @@
+{
+ "case_id": "CASE_0095",
+ "resource_kind": "Service",
+ "resource_name": "prometheus-node-exporter-prod",
+ "namespace": "prometheus-node-exporter-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "remove",
+   "path": "/metadata/annotations",
+   "old": {
+    "prometheus.io/scrape": "true"
+   },
+   "new": null
+  }
+ ],
+ "diff_readable": "REMOVE metadata.annotations: {\"prometheus.io/scrape\": \"true\"}",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: prometheus-node-exporter-prod\n  namespace: prometheus-node-exporter-prod\n  labels:\n    helm.sh/chart: prometheus-node-exporter-4.60.0\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: metrics\n    app.kubernetes.io/part-of: prometheus-node-exporter\n    app.kubernetes.io/name: prometheus-node-exporter\n    app.kubernetes.io/instance: prometheus-node-exporter-prod\n    app.kubernetes.io/version: 1.12.1\n    environment: prod\n  annotations:\n    prometheus.io/scrape: 'true'\nspec:\n  type: ClusterIP\n  ports:\n  - port: 9100\n    targetPort: 9100\n    protocol: TCP\n    name: metrics\n  selector:\n    app.kubernetes.io/name: prometheus-node-exporter\n    app.kubernetes.io/instance: prometheus-node-exporter-prod\n"
+}

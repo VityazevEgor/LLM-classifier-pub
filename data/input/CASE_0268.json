@@ -1,0 +1,19 @@
+{
+ "case_id": "CASE_0268",
+ "resource_kind": "PersistentVolumeClaim",
+ "resource_name": "postgresql-prod-pgdumpall",
+ "namespace": "postgresql-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "ci.git/commit-author": "devops-engineer"
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"ci.git/commit-author\": \"devops-engineer\"}",
+ "desired_yaml": "apiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: postgresql-prod-pgdumpall\n  namespace: postgresql-prod\n  labels:\n    app.kubernetes.io/instance: postgresql-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: postgresql\n    app.kubernetes.io/version: 18.6.0\n    helm.sh/chart: postgresql-18.12.14\n    app.kubernetes.io/component: pg_dumpall\n    environment: prod\nspec:\n  accessModes:\n  - ReadWriteOnce\n  resources:\n    requests:\n      storage: 8Gi\n"
+}

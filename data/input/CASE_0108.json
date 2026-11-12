@@ -1,0 +1,24 @@
+{
+ "case_id": "CASE_0108",
+ "resource_kind": "NetworkPolicy",
+ "resource_name": "nginx-dev",
+ "namespace": "nginx-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "remove",
+   "path": "/spec/ingress/0/ports",
+   "old": [
+    {
+     "port": 8080
+    },
+    {
+     "port": 8443
+    }
+   ],
+   "new": null
+  }
+ ],
+ "diff_readable": "REMOVE spec.ingress[0].ports: [{\"port\": 8080}, {\"port\": 8443}]",
+ "desired_yaml": "kind: NetworkPolicy\napiVersion: networking.k8s.io/v1\nmetadata:\n  name: nginx-dev\n  namespace: nginx-dev\n  labels:\n    app.kubernetes.io/instance: nginx-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: dev\nspec:\n  podSelector:\n    matchLabels:\n      app.kubernetes.io/instance: nginx-dev\n      app.kubernetes.io/name: nginx\n  policyTypes:\n  - Ingress\n  - Egress\n  egress:\n  - {}\n  ingress:\n  - ports:\n    - port: 8080\n    - port: 8443\n"
+}

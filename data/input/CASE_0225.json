@@ -1,0 +1,21 @@
+{
+ "case_id": "CASE_0225",
+ "resource_kind": "ClusterRole",
+ "resource_name": "kube-state-metrics-dev",
+ "namespace": "kube-state-metrics-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/rules/19/resources",
+   "old": [
+    "replicasets"
+   ],
+   "new": [
+    "*"
+   ]
+  }
+ ],
+ "diff_readable": "REPLACE rules[19].resources: [\"replicasets\"] → [\"*\"]",
+ "desired_yaml": "apiVersion: rbac.authorization.k8s.io/v1\nkind: ClusterRole\nmetadata:\n  labels:\n    helm.sh/chart: kube-state-metrics-8.6.0\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/component: metrics\n    app.kubernetes.io/part-of: kube-state-metrics\n    app.kubernetes.io/name: kube-state-metrics\n    app.kubernetes.io/instance: kube-state-metrics-dev\n    app.kubernetes.io/version: 2.20.0\n    environment: dev\n  name: kube-state-metrics-dev\nrules:\n- apiGroups:\n  - certificates.k8s.io\n  resources:\n  - certificatesigningrequests\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - configmaps\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - batch\n  resources:\n  - cronjobs\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - apps\n  resources:\n  - daemonsets\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - apps\n  resources:\n  - deployments\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - discovery.k8s.io\n  resources:\n  - endpointslices\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - autoscaling\n  resources:\n  - horizontalpodautoscalers\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - ingresses\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - batch\n  resources:\n  - jobs\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - coordination.k8s.io\n  resources:\n  - leases\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - limitranges\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - admissionregistration.k8s.io\n  resources:\n  - mutatingwebhookconfigurations\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - namespaces\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - networking.k8s.io\n  resources:\n  - networkpolicies\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - nodes\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - persistentvolumeclaims\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - persistentvolumes\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - policy\n  resources:\n  - poddisruptionbudgets\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - pods\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - apps\n  resources:\n  - replicasets\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - replicationcontrollers\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - resourcequotas\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - secrets\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - ''\n  resources:\n  - services\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - apps\n  resources:\n  - statefulsets\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - storage.k8s.io\n  resources:\n  - storageclasses\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - admissionregistration.k8s.io\n  resources:\n  - validatingwebhookconfigurations\n  verbs:\n  - list\n  - watch\n- apiGroups:\n  - storage.k8s.io\n  resources:\n  - volumeattachments\n  verbs:\n  - list\n  - watch\n"
+}

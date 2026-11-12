@@ -1,0 +1,27 @@
+{
+ "case_id": "CASE_0030",
+ "resource_kind": "RoleBinding",
+ "resource_name": "rabbitmq-dev-endpoint-reader",
+ "namespace": "rabbitmq-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/metadata/labels/app.kubernetes.io~1version",
+   "old": "4.1.3",
+   "new": "4.1.4"
+  },
+  {
+   "op": "add",
+   "path": "/subjects/1",
+   "old": null,
+   "new": {
+    "kind": "ServiceAccount",
+    "name": "default",
+    "namespace": "rabbitmq-dev"
+   }
+  }
+ ],
+ "diff_readable": "REPLACE metadata.labels.app.kubernetes.io/version: \"4.1.3\" → \"4.1.4\"\nADD subjects[1]: {\"kind\": \"ServiceAccount\", \"name\": \"default\", \"namespace\": \"rabbitmq-dev\"}",
+ "desired_yaml": "kind: RoleBinding\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: rabbitmq-dev-endpoint-reader\n  namespace: rabbitmq-dev\n  labels:\n    app.kubernetes.io/instance: rabbitmq-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: rabbitmq\n    app.kubernetes.io/version: 4.1.3\n    helm.sh/chart: rabbitmq-16.0.14\n    environment: dev\nsubjects:\n- kind: ServiceAccount\n  name: rabbitmq-dev\nroleRef:\n  apiGroup: rbac.authorization.k8s.io\n  kind: Role\n  name: rabbitmq-dev-endpoint-reader\n"
+}

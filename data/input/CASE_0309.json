@@ -1,0 +1,23 @@
+{
+ "case_id": "CASE_0309",
+ "resource_kind": "Service",
+ "resource_name": "nginx-dev",
+ "namespace": "nginx-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/metadata/labels/app.kubernetes.io~1version",
+   "old": "1.31.7",
+   "new": "1.31.8"
+  },
+  {
+   "op": "replace",
+   "path": "/spec/type",
+   "old": "LoadBalancer",
+   "new": "NodePort"
+  }
+ ],
+ "diff_readable": "REPLACE metadata.labels.app.kubernetes.io/version: \"1.31.7\" → \"1.31.8\"\nREPLACE spec.type: \"LoadBalancer\" → \"NodePort\"",
+ "desired_yaml": "apiVersion: v1\nkind: Service\nmetadata:\n  name: nginx-dev\n  namespace: nginx-dev\n  labels:\n    app.kubernetes.io/instance: nginx-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: dev\n  annotations: null\nspec:\n  type: LoadBalancer\n  externalTrafficPolicy: Cluster\n  ports:\n  - name: http\n    port: 80\n    targetPort: http\n  - name: https\n    port: 443\n    targetPort: https\n  selector:\n    app.kubernetes.io/instance: nginx-dev\n    app.kubernetes.io/name: nginx\n"
+}

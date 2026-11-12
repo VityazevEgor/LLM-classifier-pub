@@ -1,0 +1,17 @@
+{
+ "case_id": "CASE_0044",
+ "resource_kind": "PodDisruptionBudget",
+ "resource_name": "redis-dev-replicas",
+ "namespace": "redis-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/spec/maxUnavailable",
+   "old": 1,
+   "new": "100%"
+  }
+ ],
+ "diff_readable": "REPLACE spec.maxUnavailable: 1 → \"100%\"",
+ "desired_yaml": "apiVersion: policy/v1\nkind: PodDisruptionBudget\nmetadata:\n  name: redis-dev-replicas\n  namespace: redis-dev\n  labels:\n    app.kubernetes.io/instance: redis-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    app.kubernetes.io/component: replica\n    environment: dev\nspec:\n  maxUnavailable: 1\n  selector:\n    matchLabels:\n      app.kubernetes.io/instance: redis-dev\n      app.kubernetes.io/name: redis\n      app.kubernetes.io/component: replica\n"
+}

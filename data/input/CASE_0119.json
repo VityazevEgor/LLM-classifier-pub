@@ -1,0 +1,27 @@
+{
+ "case_id": "CASE_0119",
+ "resource_kind": "Role",
+ "resource_name": "rabbitmq-dev-endpoint-reader",
+ "namespace": "rabbitmq-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/env-ticket",
+   "old": null,
+   "new": "TICKET-986"
+  },
+  {
+   "op": "replace",
+   "path": "/rules/1/resources",
+   "old": [
+    "events"
+   ],
+   "new": [
+    "*"
+   ]
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.env-ticket: \"TICKET-986\"\nREPLACE rules[1].resources: [\"events\"] → [\"*\"]",
+ "desired_yaml": "kind: Role\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: rabbitmq-dev-endpoint-reader\n  namespace: rabbitmq-dev\n  labels:\n    app.kubernetes.io/instance: rabbitmq-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: rabbitmq\n    app.kubernetes.io/version: 4.1.3\n    helm.sh/chart: rabbitmq-16.0.14\n    environment: dev\nrules:\n- apiGroups:\n  - ''\n  resources:\n  - endpoints\n  verbs:\n  - get\n- apiGroups:\n  - ''\n  resources:\n  - events\n  verbs:\n  - create\n"
+}

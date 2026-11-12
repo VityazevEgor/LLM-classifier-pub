@@ -1,0 +1,19 @@
+{
+ "case_id": "CASE_0166",
+ "resource_kind": "ServiceAccount",
+ "resource_name": "nginx-prod",
+ "namespace": "nginx-prod",
+ "environment": "prod",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/annotations",
+   "old": null,
+   "new": {
+    "deployment.timestamp": "2026-10-26T10:00:00Z"
+   }
+  }
+ ],
+ "diff_readable": "ADD metadata.annotations: {\"deployment.timestamp\": \"2026-10-26T10:00:00Z\"}",
+ "desired_yaml": "apiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: nginx-prod\n  namespace: nginx-prod\n  labels:\n    app.kubernetes.io/instance: nginx-prod\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: prod\nautomountServiceAccountToken: false\n"
+}

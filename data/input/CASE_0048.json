@@ -1,0 +1,41 @@
+{
+ "case_id": "CASE_0048",
+ "resource_kind": "Ingress",
+ "resource_name": "nginx-dev",
+ "namespace": "nginx-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "replace",
+   "path": "/metadata/labels/app.kubernetes.io~1version",
+   "old": "1.31.7",
+   "new": "1.31.8"
+  },
+  {
+   "op": "add",
+   "path": "/spec/rules/1",
+   "old": null,
+   "new": {
+    "host": "gateway-58.internal.domain",
+    "http": {
+     "paths": [
+      {
+       "path": "/api",
+       "pathType": "Prefix",
+       "backend": {
+        "service": {
+         "name": "nginx",
+         "port": {
+          "number": 80
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "diff_readable": "REPLACE metadata.labels.app.kubernetes.io/version: \"1.31.7\" → \"1.31.8\"\nADD spec.rules[1]: {\"host\": \"gateway-58.internal.domain\", \"http\": {\"paths\": [{\"path\": \"/api\", \"pathType\": \"Prefix\", \"backend\": {\"service\": {\"name\": \"nginx\", \"port\": {\"number\": 80}}}}]}}",
+ "desired_yaml": "apiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: nginx-dev\n  namespace: nginx-dev\n  labels:\n    app.kubernetes.io/instance: nginx-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: nginx\n    app.kubernetes.io/version: 1.31.7\n    helm.sh/chart: nginx-25.2.5\n    environment: dev\nspec:\n  rules:\n  - host: nginx.local\n    http:\n      paths:\n      - path: /\n        pathType: Prefix\n        backend:\n          service:\n            name: nginx-dev\n            port:\n              name: http\n"
+}

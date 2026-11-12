@@ -1,0 +1,29 @@
+{
+ "case_id": "CASE_0141",
+ "resource_kind": "PodDisruptionBudget",
+ "resource_name": "redis-dev-master",
+ "namespace": "redis-dev",
+ "environment": "dev",
+ "diff": [
+  {
+   "op": "add",
+   "path": "/metadata/labels/pipeline.run~1id",
+   "old": null,
+   "new": "pipe-4555"
+  },
+  {
+   "op": "remove",
+   "path": "/spec/minAvailable",
+   "old": 1,
+   "new": null
+  },
+  {
+   "op": "add",
+   "path": "/spec/maxUnavailable",
+   "old": null,
+   "new": "100%"
+  }
+ ],
+ "diff_readable": "ADD metadata.labels.pipeline.run/id: \"pipe-4555\"\nREMOVE spec.minAvailable: 1\nADD spec.maxUnavailable: \"100%\"",
+ "desired_yaml": "apiVersion: policy/v1\nkind: PodDisruptionBudget\nmetadata:\n  name: redis-dev-master\n  namespace: redis-dev\n  labels:\n    app.kubernetes.io/instance: redis-dev\n    app.kubernetes.io/managed-by: Helm\n    app.kubernetes.io/name: redis\n    app.kubernetes.io/version: 8.10.2\n    helm.sh/chart: redis-28.3.1\n    app.kubernetes.io/component: master\n    environment: dev\nspec:\n  minAvailable: 1\n  selector:\n    matchLabels:\n      app.kubernetes.io/instance: redis-dev\n      app.kubernetes.io/name: redis\n      app.kubernetes.io/component: master\n"
+}
