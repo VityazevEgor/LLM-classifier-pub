@@ -71,3 +71,9 @@ python run.py --model deepseek --check            # или --check CASE_0030
 ## Результаты
 
 Подробные метрики: `results/metrics_<model>_test.json`. Итоговые предсказания: `results/predictions_<model>_test.csv`. SHA-256 промпта: `results/prompt_frozen.sha256`.
+
+## Лицензия
+
+- **Код** (весь репозиторий, кроме каталога `results/`) распространяется по лицензии [MIT](LICENSE).
+- **Логи, предсказания и метрики** (`results/`) распространяются по лицензии [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). При использовании необходимо указывать авторство.
+- Входные данные в `data/` получены из корпуса [DriftBench-Offline-Pub](https://github.com/VityazevEgor/DriftBench-Offline-Pub/tree/main) и распространяются на условиях его лицензий (корпус и разметка — CC BY 4.0).
